@@ -21,7 +21,7 @@ const SubBoard: React.FC<SubBoardProps> = ({ boardIdx, cells, winner, isActive, 
   return (
     <div className={`
       relative p-2 rounded-xl transition-all duration-500 border
-      ${isActive ? 'active-pulse bg-[#16161b] border-amber-500/40 z-10' : 'bg-[#0a0a0d] border-white/5'}
+      ${isActive ? 'active-pulse bg-stone-100 dark:bg-[#16161b] border-amber-500/40 z-10' : 'bg-transparent border-black/5 dark:border-white/5'}
       ${winner ? 'opacity-100 scale-100' : ''}
     `}>
       <div className="grid grid-cols-3 gap-1.5 w-[90px] sm:w-[120px] md:w-[150px]">
@@ -53,8 +53,8 @@ const SubBoard: React.FC<SubBoardProps> = ({ boardIdx, cells, winner, isActive, 
       )}
 
       {winner === 'DRAW' && (
-        <div className="absolute inset-0 flex items-center justify-center rounded-xl z-20 backdrop-blur-[4px] bg-black/60 border-2 border-zinc-700 animate-in fade-in duration-300">
-           <span className="text-4xl opacity-50 font-black text-white">DRAW</span>
+        <div className="absolute inset-0 flex items-center justify-center rounded-xl z-20 backdrop-blur-[4px] bg-white/60 dark:bg-black/60 border-2 border-stone-300 dark:border-zinc-700 animate-in fade-in duration-300">
+           <span className="text-2xl opacity-50 font-black text-stone-800 dark:text-white">DRAW</span>
         </div>
       )}
     </div>
