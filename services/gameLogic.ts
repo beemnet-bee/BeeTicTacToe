@@ -2,9 +2,12 @@
 import { WINNING_COMBINATIONS, BOARD_INDICES } from '../constants';
 import { Player, SubBoardWinner } from '../types';
 
-export const checkWinner = (cells: (Player | null)[]): SubBoardWinner => {
+// Updated to accept SubBoardWinner[] (Player | 'DRAW' | null)[] to fix type errors 
+// when checking the main game board winners array in App.tsx.
+export const checkWinner = (cells: SubBoardWinner[]): SubBoardWinner => {
   for (const [a, b, c] of WINNING_COMBINATIONS) {
-    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+    // Only check for Player wins ('X' or 'O'). 'DRAW' is not a win condition for 3-in-a-row.
+    if (cells[a] && cells[a] !== 'DRAW' && cells[a] === cells[b] && cells[a] === cells[c]) {
       return cells[a] as Player;
     }
   }
